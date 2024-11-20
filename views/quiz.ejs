@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <style>
+    /* Reset CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 70%;
+      margin: 30px auto;
+      padding: 20px;
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #4CAF50;
+    }
+
+    h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #f4f4f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background-color: #d1e7dd;
+      border-color: #4CAF50;
+    }
+
+    button[type="submit"] {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .timer {
+      font-size: 20px;
+      color: red;
+      margin-top: 10px;
+    }
+    .navbar {
+            background-color: #815931;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            margin-right: auto; /* Push the brand to the left */
+        }
+
+        .navbar-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav li {
+            margin-left: 20px;
+        }
+
+        .navbar-nav li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar-nav li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .footer {
+            background-color: #815931;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+        }
+    
+        .footer a {
+            color: #ffd700; /* Golden color for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+    
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-brand">CAREER CATALYST</div>
+    <ul class="navbar-nav">
+        <li><a href="/"><i class="fas fa-cogs"></i> Home</a></li>
+    </ul>
+</nav>
+  <div class="container">
+    <h1>Quiz</h1>
+    <p class="timer" id="timer"></p>
+    <form action="/submit-quiz" method="POST" id="quiz-form">
+      <% questions.forEach((question, index) => { %>
+        <h3><%= index + 1 %>. <%= question.question_text %></h3>
+        <input type="radio" name="<%= question.question_id %>" value="A" id="q<%= question.question_id %>o1">
+        <label for="q<%= question.question_id %>o1"><%= question.option_1 %></label>
+        <input type="radio" name="<%= question.question_id %>" value="B" id="q<%= question.question_id %>o2">
+        <label for="q<%= question.question_id %>o2"><%= question.option_2 %></label>
+        <input type="radio" name="<%= question.question_id %>" value="C" id="q<%= question.question_id %>o3">
+        <label for="q<%= question.question_id %>o3"><%= question.option_3 %></label>
+        <input type="radio" name="<%= question.question_id %>" value="D" id="q<%= question.question_id %>o4">
+        <label for="q<%= question.question_id %>o4"><%= question.option_4 %></label>
+      <% }); %>
+      <button type="submit">Submit Quiz</button>
+    </form>
+  </div>
+  <div class="footer">
+    <p>&copy; 2024 Career Catalyst. All rights reserved.</p>
+</div>
+  <script>
+    const form = document.getElementById('quiz-form');
+    const timerElement = document.getElementById('timer');
+    let timeLeft = 600; // 10 minutes in seconds
+
+    // Function to update the timer display
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerElement.textContent = `Time left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      if (timeLeft == 0) {
+        form.submit();
+      }
+      if (timeLeft > 0) {
+        timeLeft--;
+      }
+    }
+
+    // Start the timer and update it every second
+    updateTimer();
+    const timerInterval = setInterval(updateTimer, 1000);
+
+    // Submit the form before the page unloads
+    window.addEventListener('beforeunload', (event) => {
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      }).then(response => {
+        if (response.ok) {
+          console.log('Form successfully submitted.');
+        } else {
+          console.error('Form submission failed.');
+        }
+      }).catch(error => {
+        console.error('Error:', error);
+      });
+    });
+
+  </script>
+</body>
+</html>

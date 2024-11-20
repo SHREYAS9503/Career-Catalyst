@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="email"], textarea, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .section-container {
+            margin-bottom: 2%;
+            max-width: 500px;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .item-container input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .item-container button {
+            background-color: #815931;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .item-container button:hover {
+            background-color: #68442b;
+        }
+
+        .item-container button.remove-item {
+            background-color: #c44d58;
+            margin-left: 10px;
+        }
+
+        .item-container button.remove-item:hover {
+            background-color: #a03b45;
+        }
+        .navbar {
+            background-color: #815931;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            margin-right: auto; /* Push the brand to the left */
+        }
+
+        .navbar-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-nav li {
+            margin-left: 20px;
+        }
+
+        .navbar-nav li:first-child {
+            margin-left: 0;
+        }
+
+        .navbar-nav li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .footer {
+            background-color: #815931;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.9rem;
+        }
+    
+        .footer a {
+            color: #ffd700; /* Golden color for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+    
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">CAREER CATALYST</div>
+        <ul class="navbar-nav">
+            <li><a href="/"><i class="fas fa-cogs"></i> Home</a></li>
+        </ul>
+    </nav>
+    <form action="/get_resume" method="post">
+        <h2>Resume Information Form</h2>
+
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+        <label for="github">Github Profile (optional):</label>
+        <input type="text" id="github" name="github" placeholder="Your GitHub profile URL">
+
+        <label for="linkedin">LinkedIn Profile (optional):</label>
+        <input type="text" id="linkedin" name="linkedin" placeholder="Your LinkedIn profile URL">
+
+        <label for="portfolio">Portfolio (optional):</label>
+        <input type="text" id="portfolio" name="portfolio" placeholder="Link to your portfolio or personal website">
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" placeholder="Enter your full address" rows="3" required></textarea>
+
+        <label for="summary">Professional Summary:</label>
+        <textarea id="summary" name="summary" placeholder="Briefly describe your professional background and career goals" rows="5" required></textarea>
+
+        <div class="section-container">
+            <label for="education">Education:</label>
+            <div id="education-container">
+                <div class="item-container">
+                    <input type="text" name="education[]" placeholder="Enter your educational qualifications" required>
+                    <button type="button" class="add-item" data-container="education-container">Add Another</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <label for="hard-skills">Hard Skills:</label>
+            <div id="hard-skills-container">
+                <div class="item-container">
+                    <input type="text" name="hardSkills[]" placeholder="Enter a hard skill" required>
+                    <button type="button" class="add-item" data-container="hard-skills-container">Add Skill</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <label for="soft-skills">Soft Skills:</label>
+            <div id="soft-skills-container">
+                <div class="item-container">
+                    <input type="text" name="softSkills[]" placeholder="Enter a soft skill" required>
+                    <button type="button" class="add-item" data-container="soft-skills-container">Add Skill</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <label for="projects">Projects (if any):</label>
+            <div id="projects-container">
+                <div class="item-container">
+                    <input type="text" name="projects[]" placeholder="Enter details about a project">
+                    <button type="button" class="add-item" data-container="projects-container">Add Project</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <label for="certifications">Certifications:</label>
+            <div id="certifications-container">
+                <div class="item-container">
+                    <input type="text" name="certifications[]" placeholder="Enter certification details">
+                    <button type="button" class="add-item" data-container="certifications-container">Add Certification</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <label for="awards">Awards and Achievements:</label>
+            <div id="awards-container">
+                <div class="item-container">
+                    <input type="text" name="awardsAchievements[]" placeholder="Enter award or achievement details">
+                    <button type="button" class="add-item" data-container="awards-container">Add Award</button>
+                </div>
+            </div>
+        </div>
+        <label for="nationality">Nationality (Optional):</label>
+        <input type="text" id="nationality" name="nationality" placeholder="Nationality">
+
+        <input type="submit" value="Generate Resume">
+    </form>
+
+    <script>
+        function addItem(containerId) {
+            const container = document.getElementById(containerId);
+            const item = document.createElement('div');
+            item.classList.add('item-container');
+            item.innerHTML = `<input type="text" name="${containerId.replace('-container', '[]')}" placeholder="Enter details"> 
+                              <button type="button" class="remove-item">Remove</button>`;
+            container.appendChild(item);
+        }
+
+        function removeItem(event) {
+            if (event.target.classList.contains('remove-item')) {
+                event.target.parentElement.remove();
+            }
+        }
+
+        document.querySelectorAll('.add-item').forEach(button => {
+            button.addEventListener('click', function() {
+                addItem(this.dataset.container);
+            });
+        });
+
+        document.querySelectorAll('.section-container').forEach(container => {
+            container.addEventListener('click', removeItem);
+        });
+        <div class="footer">
+        <p>&copy; 2024 Career Catalyst. All rights reserved.</p>
+    </div>
+    </script>
+    <div class="footer">
+        <p>&copy; 2024 Career Catalyst. All rights reserved.</p>
+    </div>
+</body>
+</html>

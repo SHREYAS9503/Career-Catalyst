@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EEEEEE;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #EEEEEE;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #5e503f;
+        }
+
+        .chart-container {
+            width: 25%;
+            float: right;
+            margin: 20px 5px;
+        }
+
+        .wrong-answers {
+            margin-top: 40px;
+            padding-right: 30%;
+        }
+
+        .question {
+            background: #9ADE7B ;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            animation: fade ;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.5;
+    }
+}
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 5px 0;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Result Analysis</h1>
+        <h2>Your Score: <%= count %></h2>
+
+        <!-- Canvas for Chart -->
+        <div class="chart-container">
+            <canvas id="quizResultChart"></canvas>
+        </div>
+
+        <section>
+            <div class="wrong-answers">
+                <h2>Wrong Answers</h2>
+                <% wrong.forEach(element => { %>
+                    <div class="question">
+                        <h3><%= element.question_text %></h3>
+                        <ul>
+                            <li>A: <%= element.option_1 %></li>
+                            <li>B: <%= element.option_2 %></li>
+                            <li>C: <%= element.option_3 %></li>
+                            <li>D: <%= element.option_4 %></li>
+                            <p>Correct Answer: <%= element.correct_answer %></p>
+                        </ul>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Assuming 'count' is the number of correct answers
+        const correctAnswers =parseInt('<%= count %>');
+        const totalQuestions = 20; // Assuming 'total' is the total number of questions
+        const wrongAnswers = totalQuestions - correctAnswers;
+
+        // Data for the Chart
+        const data = {
+            labels: ['Correct', 'Incorrect'],
+            datasets: [{
+                label: 'Quiz Results',
+                data: [correctAnswers, wrongAnswers],
+                backgroundColor: ['#06D001', '#FF0000'],
+                borderColor: ['#388E3C', '#D32F2F'],
+                borderWidth: 1
+            }]
+        };
+
+        // Configuration for the Pie Chart
+        const config = {
+            type: 'pie',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const label = context.label || '';
+                                const value = context.raw;
+                                return `${label}: ${value}`;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the Chart
+        const quizResultChart = new Chart(
+            document.getElementById('quizResultChart'),
+            config
+        );
+    </script>
+</body>
+</html>
