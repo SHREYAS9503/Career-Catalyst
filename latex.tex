@@ -1,0 +1,152 @@
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{lipsum} % for dummy text
+\usepackage{calc} % for calculating lengths
+
+% Define page layout
+\setlength{\topmargin}{0cm}
+\setlength{\headheight}{0cm}
+\setlength{\headsep}{0cm}
+\setlength{\textheight}{29.4cm} % A4 paper size
+\setlength{\textwidth}{18cm}
+\setlength{\oddsidemargin}{-1cm}
+\setlength{\evensidemargin}{-1cm}
+
+% Define header and footer
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
+
+% Define name, contact information, and social media links
+\newcommand{\fullname}{mohammed jumaan}
+\newcommand{\email}{mohammedjumaan.mf@gmail.com}
+\newcommand{\phone}{9886262303}
+\newcommand{\github}{https://github.com/johndoe}
+\newcommand{\linkedin}{https://www.linkedin.com/in/johndoe}
+\newcommand{\portfolio}{https://johndoeportfolio.com}
+\newcommand{\address}{Rasul Layout Near Kaveri HospitalMohammed}
+
+% Define summary
+\newcommand{\summary}{Enthusiastic Computer Science student with a solid foundation in algorithms, data structures, and programming languages including Python, Java, and C++. Proven ability to apply theoretical knowledge to solve practical problems, demonstrated through coursework and hands-on projects. Eager to leverage academic achievements and passion for technology in a dynamic internship role to gain real-world experience and contribute to innovative solutions.}
+
+% Define education
+\newcommand{\education}{
+\begin{itemize}
+\item Bachelor of Science in Computer Science, University of XYZ, 2015-2019
+\end{itemize}
+}
+
+% Define hard skills
+\newcommand{\hard-skills}{
+\begin{itemize}
+\item Programming skills: c,c++,java
+\end{itemize}
+}
+
+% Define soft skills
+\newcommand{\soft-skills}{
+\begin{itemize}
+\item public speaking skills
+\end{itemize}
+}
+
+% Define projects
+\newcommand{\projects}{
+\begin{itemize}
+\item e commmerce website
+\end{itemize}
+}
+
+% Define experience
+\newcommand{\experience}{no exp}
+
+% Define certifications
+\newcommand{\certifications}{java certification}
+
+% Define nationality
+\newcommand{\nationality}{indian}
+
+% Begin document
+\begin{document}
+
+% Header
+\thispagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\begin{adjustbox}{width=\textwidth,center}
+\includegraphics[width=0.5\textwidth]{headshot.jpg}
+\end{adjustbox}
+
+\bigskip
+
+\begin{center}
+\textbf{\footnotesize \fullname}\\
+\textit{\footnotesize \address}
+\end{center}
+
+\bigskip
+
+% Contact information
+\begin{center}
+\begin{tabular}{ll}
+\textbf{Email:} & \email\\
+\textbf{Phone:} & \phone\\
+\textbf{GitHub:} & \github\\
+\textbf{LinkedIn:} & \linkedin\\
+\textbf{Portfolio:} & \portfolio\\
+\end{tabular}
+\end{center}
+
+\bigskip
+
+% Summary
+\section*{Summary}
+\lipsum[1]
+
+\bigskip
+
+% Education
+\section*{Education}
+\education
+
+\bigskip
+
+% Hard skills
+\section*{Technical Skills}
+\hard-skills
+
+\bigskip
+
+% Soft skills
+\section*{Soft Skills}
+\soft-skills
+
+\bigskip
+
+% Projects
+\section*{Projects}
+\projects
+
+\bigskip
+
+% Experience
+\section*{Experience}
+\experience
+
+\bigskip
+
+% Certifications
+\section*{Certifications}
+\certifications
+
+\bigskip
+
+% Nationality
+\section*{Nationality}
+\nationality
+
+\end{document}

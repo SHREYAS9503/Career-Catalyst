@@ -1,0 +1,25 @@
+{
+  "fullname": "Mohammed Jumaan",
+  "email": "mohammedjumaan.mf@gmail.com",
+  "phone": "9886262303",
+  "github": "https://github.com/johndoe",
+  "linkedin": "https://www.linkedin.com/in/johndoe",
+  "portfolio": "https://johndoeportfolio.com",
+  "address": "Rasul Layout Near Kaveri Hospital\nMohammed",
+  "summary": "Enthusiastic Computer Science student with a strong foundation in algorithms, data structures, and programming languages including Python, Java, and C++. I have a proven ability to apply theoretical knowledge to solve practical problems, demonstrated through coursework and hands-on projects. I am eager to leverage my academic achievements and passion for technology in a dynamic internship role to gain real-world experience and contribute to innovative solutions.",
+  "education": [
+    "Bachelor of Science in Computer Science, University of XYZ, 2015-2019"
+  ],
+  "hard-skills": [
+    "Programming skills: C, C++, Java"
+  ],
+  "soft-skills": [
+    "Public speaking skills"
+  ],
+  "projects": [
+    "E-commerce website"
+  ],
+  "experience": "No prior experience",
+  "certifications": "Java certification",
+  "nationality": "Indian"
+}

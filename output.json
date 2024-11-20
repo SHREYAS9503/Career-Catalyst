@@ -1,0 +1,64 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "question": "A train travels 120 km in 2 hours. What is the speed of the train?",
+      "options": ["40 km/hr", "60 km/hr", "80 km/hr", "100 km/hr"],
+      "answer": 1
+    },
+    {
+      "id": 2,
+      "question": "A sum of money doubles itself in 10 years. What is the rate of interest per annum?",
+      "options": ["5%", "10%", "15%", "20%"],
+      "answer": 1
+    },
+    {
+      "id": 3,
+      "question": "The ratio of two numbers is 3:5. If the sum of the numbers is 48, find the smaller number.",
+      "options": ["12", "18", "24", "30"],
+      "answer": 1
+    },
+    {
+      "id": 4,
+      "question": "A man takes 6 hours to complete a piece of work. If he had worked twice as fast, how much time would he have taken?",
+      "options": ["2 hours", "3 hours", "4 hours", "5 hours"],
+      "answer": 0
+    },
+    {
+      "id": 5,
+      "question": "A boat travels 30 km downstream in 2 hours and returns upstream in 3 hours. Find the speed of the boat in still water.",
+      "options": ["10 km/hr", "15 km/hr", "20 km/hr", "25 km/hr"],
+      "answer": 1
+    },
+    {
+      "id": 6,
+      "question": "A shopkeeper sells a product for Rs. 1200, thereby making a profit of 20%. Find the cost price of the product.",
+      "options": ["Rs. 800", "Rs. 900", "Rs. 1000", "Rs. 1100"],
+      "answer": 1
+    },
+    {
+      "id": 7,
+      "question": "A cylinder has a radius of 7 cm and a height of 10 cm. Find the volume of the cylinder.",
+      "options": ["308 cu. cm", "396 cu. cm", "484 cu. cm", "572 cu. cm"],
+      "answer": 0
+    },
+    {
+      "id": 8,
+      "question": "The area of a rectangle is 48 sq. cm. If the length of the rectangle is twice its width, find the perimeter of the rectangle.",
+      "options": ["24 cm", "32 cm", "40 cm", "48 cm"],
+      "answer": 1
+    },
+    {
+      "id": 9,
+      "question": "A train leaves city A at 10:00 AM and arrives at city B at 2:00 PM. The distance between the two cities is 240 km. Find the average speed of the train.",
+      "options": ["40 km/hr", "60 km/hr", "80 km/hr", "100 km/hr"],
+      "answer": 1
+    },
+    {
+      "id": 10,
+      "question": "A shopkeeper has 60 kg of sugar. He sells 20 kg of sugar and purchases another 30 kg of sugar. Find the ratio of the sugar he had initially to the sugar he has now.",
+      "options": ["1:2", "2:3", "3:4", "4:5"],
+      "answer": 2
+    }
+  ]
+}
